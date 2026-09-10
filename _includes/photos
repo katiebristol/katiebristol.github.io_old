@@ -1,21 +1,21 @@
 {% include base_path %}
 
 {% if include.id %}
-  {% assign gallery = page.[include.id] %}
+  {% assign photos = page.[include.id] %}
 {% else %}
-  {% assign gallery = page.gallery %}
+  {% assign photos = page.photos %}
 {% endif %}
 
-{% if gallery.size == 2 %}
-  {% assign gallery_layout = 'half' %}
-{% elsif gallery.size >= 3 %}
-  {% assign gallery_layout = 'third' %}
+{% if photos.size == 2 %}
+  {% assign photos_layout = 'half' %}
+{% elsif photos.size >= 3 %}
+  {% assign photos_layout = 'third' %}
 {% else %}
-  {% assign gallery_layout = '' %}
+  {% assign photos_layout = '' %}
 {% endif %}
 
-<figure class="{{ gallery_layout }} {{ include.class }}">
-  {% for img in gallery %}
+<figure class="{{ photos_layout }} {{ include.class }}">
+  {% for img in photos %}
     {% if img.url %}
       <a href=
         {% if img.url contains "://" %}
